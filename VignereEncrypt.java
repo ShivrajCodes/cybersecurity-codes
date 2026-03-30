@@ -1,10 +1,10 @@
 import java.util.Scanner;
 
-public class VigenereDecrypt {
+public class VigenereEncrypt {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("Enter encrypted text: ");
+        System.out.print("Enter text: ");
         String text = sc.nextLine().toUpperCase();
 
         System.out.print("Enter key: ");
@@ -18,13 +18,13 @@ public class VigenereDecrypt {
 
             if (Character.isLetter(c)) {
                 int shift = key.charAt(j % key.length()) - 'A';
-                result += (char) ((c - 'A' - shift + 26) % 26 + 'A');
+                result += (char) ((c - 'A' + shift) % 26 + 'A');
                 j++;
             } else {
                 result += c;
             }
         }
 
-        System.out.println("Decrypted: " + result);
+        System.out.println("Encrypted: " + result);
     }
 }
